@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PlayerService } from '../../providers/player.service';
+
 
 @Component({
   selector: 'app-home',
@@ -6,11 +8,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  title = `App works !`;
-
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private playerService: PlayerService) {
   }
 
+  ngOnInit() {
+    this.playerService.load('/Users/vincent/Documents/_projects/personal/audiojs/music/1.mp3');
+  }
+
+  play() {
+    this.playerService.play();
+  }
+
+  pause() {
+    this.playerService.pause();
+  }
+
+  stop() {
+    this.playerService.stop();
+  }
 }

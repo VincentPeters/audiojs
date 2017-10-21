@@ -1,5 +1,11 @@
 <div class="container">
-  <h1 class="title">
-    {{title}}
-  </h1>
+
+  <div class="time">
+    <p>Length: <span class="js-length"></span></p>
+  </div>
+  <div class="controls">
+    <a (click)="play()">▶️</a>
+    <a (click)="pause()">⏸️</a>
+    <a (click)="stop()">⏹️</a>
+  </div>
 </div>
