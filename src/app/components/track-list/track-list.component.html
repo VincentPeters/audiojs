@@ -1,0 +1,8 @@
+<ul>
+  <li *ngFor="let track of tracks" (click)="onSelect.emit(track)">
+    name : {{ track.name }}
+    type : {{ track.type }}
+    loaded: {{ track.loaded }}
+    playing: {{ track.playing }}
+  </li>
+</ul>

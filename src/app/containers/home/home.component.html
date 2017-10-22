@@ -1,0 +1,16 @@
+<div class="container">
+  <app-track-list [tracks]="tracks$ | async"
+                  (onSelect)="onSelect($event)">
+  </app-track-list>
+
+  <hr>
+
+  <app-player [track]="track$ | async"
+              [playing]="playing$ | async"
+              [seek]="seek$ | async"
+              (pause)="pause()"
+              (setSeek)="setSeek($event)"
+              (stop)="stop()"
+              (play)="play()">
+  </app-player>
+</div>
