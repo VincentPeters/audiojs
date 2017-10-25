@@ -1,6 +1,9 @@
 <div *ngIf="track">
-  {{ seek | formatTime }}
 
+  <button (click)="play.emit()" [disabled]="playing">PLAY</button>
+  <button (click)="pause.emit()" [disabled]="!playing">PAUSE</button>
+
+  {{ seek | formatTime }}
 
   <input type="range"
          (change)="setSeek.emit({
@@ -11,21 +14,8 @@
 
   {{ track.duration | formatTime }}
 
-  <hr>
-
-  <button (click)="play.emit()" [disabled]="playing">PLAY</button>
-  <button (click)="pause.emit()" [disabled]="!playing">PAUSE</button>
   <button (click)="stop.emit()">STOP</button>
-
-  <hr>
-
-  <div class="meta">
-    <h1>{{ track.name }}</h1>
-    <h2>{{ track.artist?.name }}</h2>
-    <h3>{{ track.album?.name }}</h3>
-  </div>
 </div>
-
 
 <div *ngIf="!track">
   <h2>No track selected</h2>

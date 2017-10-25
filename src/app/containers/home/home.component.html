@@ -1,16 +1,36 @@
 <div class="container">
-  <app-track-list [tracks]="tracks$ | async"
-                  (onSelect)="onSelect($event)">
-  </app-track-list>
 
-  <hr>
+  <!--<hr>-->
 
-  <app-player [track]="track$ | async"
-              [playing]="playing$ | async"
-              [seek]="seek$ | async"
-              (pause)="pause()"
-              (setSeek)="setSeek($event)"
-              (stop)="stop()"
-              (play)="play()">
-  </app-player>
+  <mat-grid-list cols="4" rowHeight="fit">
+    <mat-grid-tile [colspan]="1">
+      <mat-grid-tile-header>Sidebar</mat-grid-tile-header>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="2">
+      <mat-grid-tile-header>Queuelist</mat-grid-tile-header>
+      <app-track-list [tracks]="tracks$ | async"
+                      (onSelect)="onSelect($event)">
+      </app-track-list>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1">
+      <mat-grid-tile-header>
+        Track meta
+      </mat-grid-tile-header>
+      <app-meta [track]="track$ | async"></app-meta>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <footer>
+    <app-player [track]="track$ | async"
+                [playing]="playing$ | async"
+                [seek]="seek$ | async"
+                (pause)="pause()"
+                (setSeek)="setSeek($event)"
+                (stop)="stop()"
+                (play)="play()">
+    </app-player>
+  </footer>
+
 </div>
+
+

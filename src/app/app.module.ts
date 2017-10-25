@@ -3,6 +3,8 @@ import 'reflect-metadata';
 import 'polyfills';
 
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule, MatCheckboxModule, MatGridListModule } from '@angular/material';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -16,10 +18,11 @@ import { ElectronService } from './providers/electron.service';
 import { PlayerService } from './providers/player.service';
 import { TrackListComponent } from './components/track-list/track-list.component';
 import { PlayerComponent } from './components/player/player.component';
-import {StoreModule} from '@ngrx/store';
-import {metaReducers, reducers} from './reducers/index';
-import {EffectsModule} from '@ngrx/effects';
-import {PlayerEffects} from './effects/player.effects';
+import { MetaComponent } from './components/meta/meta.component';
+import { StoreModule } from '@ngrx/store';
+import { metaReducers, reducers } from './reducers/index';
+import { EffectsModule } from '@ngrx/effects';
+import { PlayerEffects } from './effects/player.effects';
 import { FormatTimePipe } from './pipes/format-time.pipe';
 
 @NgModule({
@@ -28,16 +31,21 @@ import { FormatTimePipe } from './pipes/format-time.pipe';
     HomeComponent,
     TrackListComponent,
     PlayerComponent,
+    MetaComponent,
     FormatTimePipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatGridListModule,
     HttpModule,
     AppRoutingModule,
     EffectsModule.forRoot([PlayerEffects]),
 
-    StoreModule.forRoot(reducers, {metaReducers}),
+    StoreModule.forRoot(reducers, { metaReducers }),
   ],
   providers: [
     ElectronService,

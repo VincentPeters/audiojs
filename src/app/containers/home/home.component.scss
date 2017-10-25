@@ -1,9 +1,20 @@
+$height: 50px;
+
 .container {
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: black;
 }
 
+mat-grid-tile {
+  background: lightblue;
+}
+
+mat-grid-list {
+  height: calc(100% - #{$height});
+}
+
+footer {
+  height: $height;
+  background: black;
+  vertical-align: top;
+  display: flex;
+}
